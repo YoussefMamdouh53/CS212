@@ -31,19 +31,19 @@ public:
         top=tmp;
         length++;
     }
-    int pop() {
+    T pop() {
         if (top==nullptr) {
             cout << "Empty Stack" << endl;
             exit(1);
         }
         Node<T> *tmp = top->next;
-        int value = top->data;
+        T value = top->data;
         delete top;
         top = tmp;
         length--;
         return value;
     }
-    int peak() {
+    T peak() {
         if (top==nullptr){
             cout << "Empty Stack" << endl;
             exit(1);
