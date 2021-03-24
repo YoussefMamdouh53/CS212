@@ -26,6 +26,7 @@ public:
 	int getSize();
 	int getCapacity();
 	int get(int index);
+	void set(int index, int value);
 	void push_back(int value);
 	void push_front(int value);
 	void pop_back();
@@ -66,11 +67,18 @@ int List::getCapacity() {
 int List::get(int index) {
 	if (index < 0 || index >= size) {
 		cout << "ERROR: Index out of bounds" << endl;
-		return NULL;
+		exit(1);
 	}
 	return arr[index];
 }
 
+void List::set(int index, int value) {
+	if (index < 0 || index >= size) {
+		cout << "ERROR: Index out of bounds" << endl;
+		return;
+	}
+	arr[index]=value;
+}
 void List::push_back(int value) {
 	if (size >= capacity)
 		reAllocate();
@@ -98,10 +106,19 @@ void List::pop_front() {
 
 int List::front() {
 	return !isEmpty() ? arr[0] : NULL;
+	if (!isEmpty()) return arr[0];
+	else {
+		cout << "Empty List" << endl;
+		exit(1);
+	}
 }
 
 int List::back() {
-	return !isEmpty() ? arr[size - 1] : NULL;
+	if (!isEmpty()) return arr[size - 1];
+	else {
+		cout << "Empty List" << endl;
+		exit(1);
+	}
 }
 
 void List::remove(int index) {
@@ -138,6 +155,7 @@ int main()
 	l.push_back(12);
 	l.print();
 	l.pop_front();
+	l.set(1,55);
 	l.print();
 	l.pop_back();
 	l.print();
@@ -145,9 +163,9 @@ int main()
 	l.print();
 	l.push_front(14);
 	l.print();
+	cout << l.getSize() << endl;
 	cout << l.front() << endl;
 	cout << l.back() << endl;
-	cin.get();
 	return 0;
 }
 
@@ -156,10 +174,10 @@ OUTPUT:
 
 	Reallocated: new capacity is 10
 	5 4 53 21 46 12
-	4 53 21 46 12
-	4 53 21 46
+	4 55 21 46 12
+	4 55 21 46
 	4 21 46
-	14 4 21 46
+	14 4 21 46 
 	14
 	46
 
