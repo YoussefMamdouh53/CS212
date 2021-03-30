@@ -60,12 +60,13 @@ public:
 
 // driver..
 int main() {
-    Stack<int> s;
-    s.push(1);
-    s.push(2);
-    s.push(3);
-    s.push(4);
-    s.push(5);
+    Stack<string> s;
+    s.push("sbc");
+    s.push("df");
+    s.push("sbsdc");
+    s.push("sbasdc");
+    s.push("fgfgd");
+    s.push("sbcerer"); 
     cout << s.peak() << endl;
     while(!s.isEmpty()){
         cout << s.pop() << endl;
